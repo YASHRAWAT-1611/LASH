@@ -1,7 +1,5 @@
 # LASH
- a compiled programming language with an easy-to-understand syntax and high performance
- 
- LASH PROGRAMMING LANGUAGE DOCUMENTATION
+LASH PROGRAMMING LANGUAGE DOCUMENTATION
 
 Introduction
 
