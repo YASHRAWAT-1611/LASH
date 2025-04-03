@@ -11,4 +11,4 @@
 
         1.1 Variable
 
-        ![image](https://github.com/YASHRAWAT-1611/LASH/blob/1d495a3db4bd6c0603eb1bda15303f92df2816cc/image.png)
+        ![image](image.png)
