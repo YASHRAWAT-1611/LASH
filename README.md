@@ -3,12 +3,12 @@
  
  LASH PROGRAMMING LANGUAGE DOCUMENTATION
 
-    Introduction
+Introduction
 
-    Lash is a simple, object-oriented programming language inspired by Python, C++, and Java. It is designed for readability and ease of use while maintaining powerful object-oriented features.
+Lash is a simple, object-oriented programming language inspired by Python, C++, and Java. It is designed for readability and ease of use while maintaining powerful object-oriented features.
 
-    1. Basic Syntax
+1. Basic Syntax
 
-        1.1 Variable
+1.1 Variable
 
-        ![image](image.png)
+![image](image.png)
