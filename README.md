@@ -10,3 +10,5 @@
     1. Basic Syntax
 
         1.1 Variable
+
+        ![alt text](image-1.png)
