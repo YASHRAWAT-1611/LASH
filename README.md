@@ -11,4 +11,24 @@ Lash is a simple, object-oriented programming language inspired by Python, C++, 
 
 1.1 Variable
 
-![image](image.png)
+![image1](image.png)
+
+No need for = or var
+Type is inferred automatically.
+
+1.2 Type Casting
+
+![image2](image-1.png)
+
+
+2. Input & Output
+
+2.1 Displaying Output
+
+![image3](image-2.png)
+
+2.2 Taking User Input
+
+![image4](image-3.png)
+
+Default values can be provided: city ask "Enter city:" 
