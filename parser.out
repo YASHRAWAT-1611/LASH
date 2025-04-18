@@ -1,0 +1,1012 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    AND
+    ASK
+    DIVIDE
+    EQEQ
+    GE
+    GT
+    LE
+    LT
+    MINUS
+    MOD
+    NEQ
+    NOT
+    OR
+    PLUS
+    TIMES
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement
+Rule 3     statement_list -> statement_list statement
+Rule 4     statement -> var_assign
+Rule 5     statement -> func_def
+Rule 6     statement -> func_call
+Rule 7     statement -> show_stmt
+Rule 8     statement -> if_statement
+Rule 9     statement -> loop_statement
+Rule 10    statement -> class_def
+Rule 11    var_assign -> IDENTIFIER EQUALS expression
+Rule 12    expression -> NUMBER
+Rule 13    expression -> STRING
+Rule 14    expression -> IDENTIFIER
+Rule 15    func_def -> FN IDENTIFIER LPAREN parameters RPAREN block
+Rule 16    parameters -> IDENTIFIER
+Rule 17    parameters -> parameters COMMA IDENTIFIER
+Rule 18    parameters -> empty
+Rule 19    func_call -> IDENTIFIER LPAREN arguments RPAREN
+Rule 20    arguments -> expression
+Rule 21    arguments -> arguments COMMA expression
+Rule 22    arguments -> empty
+Rule 23    if_statement -> IF expression block elseif_list else_block
+Rule 24    elseif_list -> elseif_list elseif
+Rule 25    elseif_list -> empty
+Rule 26    elseif -> ELSEIF expression block
+Rule 27    else_block -> ELSE block
+Rule 28    else_block -> empty
+Rule 29    loop_statement -> REPEAT expression block
+Rule 30    loop_statement -> LOOP block
+Rule 31    class_def -> CLASS IDENTIFIER block
+Rule 32    block -> LBRACE statement_list RBRACE
+Rule 33    show_stmt -> SHOW expression
+Rule 34    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 
+ASK                  : 
+CLASS                : 31
+COMMA                : 17 21
+DIVIDE               : 
+ELSE                 : 27
+ELSEIF               : 26
+EQEQ                 : 
+EQUALS               : 11
+FN                   : 15
+GE                   : 
+GT                   : 
+IDENTIFIER           : 11 14 15 16 17 19 31
+IF                   : 23
+LBRACE               : 32
+LE                   : 
+LOOP                 : 30
+LPAREN               : 15 19
+LT                   : 
+MINUS                : 
+MOD                  : 
+NEQ                  : 
+NOT                  : 
+NUMBER               : 12
+OR                   : 
+PLUS                 : 
+RBRACE               : 32
+REPEAT               : 29
+RPAREN               : 15 19
+SHOW                 : 33
+STRING               : 13
+TIMES                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+arguments            : 19 21
+block                : 15 23 26 27 29 30 31
+class_def            : 10
+else_block           : 23
+elseif               : 24
+elseif_list          : 23 24
+empty                : 18 22 25 28
+expression           : 11 20 21 23 26 29 33
+func_call            : 6
+func_def             : 5
+if_statement         : 8
+loop_statement       : 9
+parameters           : 15 17
+program              : 0
+show_stmt            : 7
+statement            : 2 3
+statement_list       : 1 3 32
+var_assign           : 4
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement_list statement
+    (4) statement -> . var_assign
+    (5) statement -> . func_def
+    (6) statement -> . func_call
+    (7) statement -> . show_stmt
+    (8) statement -> . if_statement
+    (9) statement -> . loop_statement
+    (10) statement -> . class_def
+    (11) var_assign -> . IDENTIFIER EQUALS expression
+    (15) func_def -> . FN IDENTIFIER LPAREN parameters RPAREN block
+    (19) func_call -> . IDENTIFIER LPAREN arguments RPAREN
+    (33) show_stmt -> . SHOW expression
+    (23) if_statement -> . IF expression block elseif_list else_block
+    (29) loop_statement -> . REPEAT expression block
+    (30) loop_statement -> . LOOP block
+    (31) class_def -> . CLASS IDENTIFIER block
+
+    IDENTIFIER      shift and go to state 11
+    FN              shift and go to state 12
+    SHOW            shift and go to state 13
+    IF              shift and go to state 14
+    REPEAT          shift and go to state 15
+    LOOP            shift and go to state 16
+    CLASS           shift and go to state 17
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    var_assign                     shift and go to state 4
+    func_def                       shift and go to state 5
+    func_call                      shift and go to state 6
+    show_stmt                      shift and go to state 7
+    if_statement                   shift and go to state 8
+    loop_statement                 shift and go to state 9
+    class_def                      shift and go to state 10
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+    (3) statement_list -> statement_list . statement
+    (4) statement -> . var_assign
+    (5) statement -> . func_def
+    (6) statement -> . func_call
+    (7) statement -> . show_stmt
+    (8) statement -> . if_statement
+    (9) statement -> . loop_statement
+    (10) statement -> . class_def
+    (11) var_assign -> . IDENTIFIER EQUALS expression
+    (15) func_def -> . FN IDENTIFIER LPAREN parameters RPAREN block
+    (19) func_call -> . IDENTIFIER LPAREN arguments RPAREN
+    (33) show_stmt -> . SHOW expression
+    (23) if_statement -> . IF expression block elseif_list else_block
+    (29) loop_statement -> . REPEAT expression block
+    (30) loop_statement -> . LOOP block
+    (31) class_def -> . CLASS IDENTIFIER block
+
+    $end            reduce using rule 1 (program -> statement_list .)
+    IDENTIFIER      shift and go to state 11
+    FN              shift and go to state 12
+    SHOW            shift and go to state 13
+    IF              shift and go to state 14
+    REPEAT          shift and go to state 15
+    LOOP            shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement                      shift and go to state 18
+    var_assign                     shift and go to state 4
+    func_def                       shift and go to state 5
+    func_call                      shift and go to state 6
+    show_stmt                      shift and go to state 7
+    if_statement                   shift and go to state 8
+    loop_statement                 shift and go to state 9
+    class_def                      shift and go to state 10
+
+state 3
+
+    (2) statement_list -> statement .
+
+    IDENTIFIER      reduce using rule 2 (statement_list -> statement .)
+    FN              reduce using rule 2 (statement_list -> statement .)
+    SHOW            reduce using rule 2 (statement_list -> statement .)
+    IF              reduce using rule 2 (statement_list -> statement .)
+    REPEAT          reduce using rule 2 (statement_list -> statement .)
+    LOOP            reduce using rule 2 (statement_list -> statement .)
+    CLASS           reduce using rule 2 (statement_list -> statement .)
+    $end            reduce using rule 2 (statement_list -> statement .)
+    RBRACE          reduce using rule 2 (statement_list -> statement .)
+
+
+state 4
+
+    (4) statement -> var_assign .
+
+    IDENTIFIER      reduce using rule 4 (statement -> var_assign .)
+    FN              reduce using rule 4 (statement -> var_assign .)
+    SHOW            reduce using rule 4 (statement -> var_assign .)
+    IF              reduce using rule 4 (statement -> var_assign .)
+    REPEAT          reduce using rule 4 (statement -> var_assign .)
+    LOOP            reduce using rule 4 (statement -> var_assign .)
+    CLASS           reduce using rule 4 (statement -> var_assign .)
+    $end            reduce using rule 4 (statement -> var_assign .)
+    RBRACE          reduce using rule 4 (statement -> var_assign .)
+
+
+state 5
+
+    (5) statement -> func_def .
+
+    IDENTIFIER      reduce using rule 5 (statement -> func_def .)
+    FN              reduce using rule 5 (statement -> func_def .)
+    SHOW            reduce using rule 5 (statement -> func_def .)
+    IF              reduce using rule 5 (statement -> func_def .)
+    REPEAT          reduce using rule 5 (statement -> func_def .)
+    LOOP            reduce using rule 5 (statement -> func_def .)
+    CLASS           reduce using rule 5 (statement -> func_def .)
+    $end            reduce using rule 5 (statement -> func_def .)
+    RBRACE          reduce using rule 5 (statement -> func_def .)
+
+
+state 6
+
+    (6) statement -> func_call .
+
+    IDENTIFIER      reduce using rule 6 (statement -> func_call .)
+    FN              reduce using rule 6 (statement -> func_call .)
+    SHOW            reduce using rule 6 (statement -> func_call .)
+    IF              reduce using rule 6 (statement -> func_call .)
+    REPEAT          reduce using rule 6 (statement -> func_call .)
+    LOOP            reduce using rule 6 (statement -> func_call .)
+    CLASS           reduce using rule 6 (statement -> func_call .)
+    $end            reduce using rule 6 (statement -> func_call .)
+    RBRACE          reduce using rule 6 (statement -> func_call .)
+
+
+state 7
+
+    (7) statement -> show_stmt .
+
+    IDENTIFIER      reduce using rule 7 (statement -> show_stmt .)
+    FN              reduce using rule 7 (statement -> show_stmt .)
+    SHOW            reduce using rule 7 (statement -> show_stmt .)
+    IF              reduce using rule 7 (statement -> show_stmt .)
+    REPEAT          reduce using rule 7 (statement -> show_stmt .)
+    LOOP            reduce using rule 7 (statement -> show_stmt .)
+    CLASS           reduce using rule 7 (statement -> show_stmt .)
+    $end            reduce using rule 7 (statement -> show_stmt .)
+    RBRACE          reduce using rule 7 (statement -> show_stmt .)
+
+
+state 8
+
+    (8) statement -> if_statement .
+
+    IDENTIFIER      reduce using rule 8 (statement -> if_statement .)
+    FN              reduce using rule 8 (statement -> if_statement .)
+    SHOW            reduce using rule 8 (statement -> if_statement .)
+    IF              reduce using rule 8 (statement -> if_statement .)
+    REPEAT          reduce using rule 8 (statement -> if_statement .)
+    LOOP            reduce using rule 8 (statement -> if_statement .)
+    CLASS           reduce using rule 8 (statement -> if_statement .)
+    $end            reduce using rule 8 (statement -> if_statement .)
+    RBRACE          reduce using rule 8 (statement -> if_statement .)
+
+
+state 9
+
+    (9) statement -> loop_statement .
+
+    IDENTIFIER      reduce using rule 9 (statement -> loop_statement .)
+    FN              reduce using rule 9 (statement -> loop_statement .)
+    SHOW            reduce using rule 9 (statement -> loop_statement .)
+    IF              reduce using rule 9 (statement -> loop_statement .)
+    REPEAT          reduce using rule 9 (statement -> loop_statement .)
+    LOOP            reduce using rule 9 (statement -> loop_statement .)
+    CLASS           reduce using rule 9 (statement -> loop_statement .)
+    $end            reduce using rule 9 (statement -> loop_statement .)
+    RBRACE          reduce using rule 9 (statement -> loop_statement .)
+
+
+state 10
+
+    (10) statement -> class_def .
+
+    IDENTIFIER      reduce using rule 10 (statement -> class_def .)
+    FN              reduce using rule 10 (statement -> class_def .)
+    SHOW            reduce using rule 10 (statement -> class_def .)
+    IF              reduce using rule 10 (statement -> class_def .)
+    REPEAT          reduce using rule 10 (statement -> class_def .)
+    LOOP            reduce using rule 10 (statement -> class_def .)
+    CLASS           reduce using rule 10 (statement -> class_def .)
+    $end            reduce using rule 10 (statement -> class_def .)
+    RBRACE          reduce using rule 10 (statement -> class_def .)
+
+
+state 11
+
+    (11) var_assign -> IDENTIFIER . EQUALS expression
+    (19) func_call -> IDENTIFIER . LPAREN arguments RPAREN
+
+    EQUALS          shift and go to state 19
+    LPAREN          shift and go to state 20
+
+
+state 12
+
+    (15) func_def -> FN . IDENTIFIER LPAREN parameters RPAREN block
+
+    IDENTIFIER      shift and go to state 21
+
+
+state 13
+
+    (33) show_stmt -> SHOW . expression
+    (12) expression -> . NUMBER
+    (13) expression -> . STRING
+    (14) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    STRING          shift and go to state 24
+    IDENTIFIER      shift and go to state 25
+
+    expression                     shift and go to state 22
+
+state 14
+
+    (23) if_statement -> IF . expression block elseif_list else_block
+    (12) expression -> . NUMBER
+    (13) expression -> . STRING
+    (14) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    STRING          shift and go to state 24
+    IDENTIFIER      shift and go to state 25
+
+    expression                     shift and go to state 26
+
+state 15
+
+    (29) loop_statement -> REPEAT . expression block
+    (12) expression -> . NUMBER
+    (13) expression -> . STRING
+    (14) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    STRING          shift and go to state 24
+    IDENTIFIER      shift and go to state 25
+
+    expression                     shift and go to state 27
+
+state 16
+
+    (30) loop_statement -> LOOP . block
+    (32) block -> . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 29
+
+    block                          shift and go to state 28
+
+state 17
+
+    (31) class_def -> CLASS . IDENTIFIER block
+
+    IDENTIFIER      shift and go to state 30
+
+
+state 18
+
+    (3) statement_list -> statement_list statement .
+
+    IDENTIFIER      reduce using rule 3 (statement_list -> statement_list statement .)
+    FN              reduce using rule 3 (statement_list -> statement_list statement .)
+    SHOW            reduce using rule 3 (statement_list -> statement_list statement .)
+    IF              reduce using rule 3 (statement_list -> statement_list statement .)
+    REPEAT          reduce using rule 3 (statement_list -> statement_list statement .)
+    LOOP            reduce using rule 3 (statement_list -> statement_list statement .)
+    CLASS           reduce using rule 3 (statement_list -> statement_list statement .)
+    $end            reduce using rule 3 (statement_list -> statement_list statement .)
+    RBRACE          reduce using rule 3 (statement_list -> statement_list statement .)
+
+
+state 19
+
+    (11) var_assign -> IDENTIFIER EQUALS . expression
+    (12) expression -> . NUMBER
+    (13) expression -> . STRING
+    (14) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    STRING          shift and go to state 24
+    IDENTIFIER      shift and go to state 25
+
+    expression                     shift and go to state 31
+
+state 20
+
+    (19) func_call -> IDENTIFIER LPAREN . arguments RPAREN
+    (20) arguments -> . expression
+    (21) arguments -> . arguments COMMA expression
+    (22) arguments -> . empty
+    (12) expression -> . NUMBER
+    (13) expression -> . STRING
+    (14) expression -> . IDENTIFIER
+    (34) empty -> .
+
+    NUMBER          shift and go to state 23
+    STRING          shift and go to state 24
+    IDENTIFIER      shift and go to state 25
+    RPAREN          reduce using rule 34 (empty -> .)
+    COMMA           reduce using rule 34 (empty -> .)
+
+    arguments                      shift and go to state 32
+    expression                     shift and go to state 33
+    empty                          shift and go to state 34
+
+state 21
+
+    (15) func_def -> FN IDENTIFIER . LPAREN parameters RPAREN block
+
+    LPAREN          shift and go to state 35
+
+
+state 22
+
+    (33) show_stmt -> SHOW expression .
+
+    IDENTIFIER      reduce using rule 33 (show_stmt -> SHOW expression .)
+    FN              reduce using rule 33 (show_stmt -> SHOW expression .)
+    SHOW            reduce using rule 33 (show_stmt -> SHOW expression .)
+    IF              reduce using rule 33 (show_stmt -> SHOW expression .)
+    REPEAT          reduce using rule 33 (show_stmt -> SHOW expression .)
+    LOOP            reduce using rule 33 (show_stmt -> SHOW expression .)
+    CLASS           reduce using rule 33 (show_stmt -> SHOW expression .)
+    $end            reduce using rule 33 (show_stmt -> SHOW expression .)
+    RBRACE          reduce using rule 33 (show_stmt -> SHOW expression .)
+
+
+state 23
+
+    (12) expression -> NUMBER .
+
+    IDENTIFIER      reduce using rule 12 (expression -> NUMBER .)
+    FN              reduce using rule 12 (expression -> NUMBER .)
+    SHOW            reduce using rule 12 (expression -> NUMBER .)
+    IF              reduce using rule 12 (expression -> NUMBER .)
+    REPEAT          reduce using rule 12 (expression -> NUMBER .)
+    LOOP            reduce using rule 12 (expression -> NUMBER .)
+    CLASS           reduce using rule 12 (expression -> NUMBER .)
+    $end            reduce using rule 12 (expression -> NUMBER .)
+    RBRACE          reduce using rule 12 (expression -> NUMBER .)
+    LBRACE          reduce using rule 12 (expression -> NUMBER .)
+    RPAREN          reduce using rule 12 (expression -> NUMBER .)
+    COMMA           reduce using rule 12 (expression -> NUMBER .)
+
+
+state 24
+
+    (13) expression -> STRING .
+
+    IDENTIFIER      reduce using rule 13 (expression -> STRING .)
+    FN              reduce using rule 13 (expression -> STRING .)
+    SHOW            reduce using rule 13 (expression -> STRING .)
+    IF              reduce using rule 13 (expression -> STRING .)
+    REPEAT          reduce using rule 13 (expression -> STRING .)
+    LOOP            reduce using rule 13 (expression -> STRING .)
+    CLASS           reduce using rule 13 (expression -> STRING .)
+    $end            reduce using rule 13 (expression -> STRING .)
+    RBRACE          reduce using rule 13 (expression -> STRING .)
+    LBRACE          reduce using rule 13 (expression -> STRING .)
+    RPAREN          reduce using rule 13 (expression -> STRING .)
+    COMMA           reduce using rule 13 (expression -> STRING .)
+
+
+state 25
+
+    (14) expression -> IDENTIFIER .
+
+    IDENTIFIER      reduce using rule 14 (expression -> IDENTIFIER .)
+    FN              reduce using rule 14 (expression -> IDENTIFIER .)
+    SHOW            reduce using rule 14 (expression -> IDENTIFIER .)
+    IF              reduce using rule 14 (expression -> IDENTIFIER .)
+    REPEAT          reduce using rule 14 (expression -> IDENTIFIER .)
+    LOOP            reduce using rule 14 (expression -> IDENTIFIER .)
+    CLASS           reduce using rule 14 (expression -> IDENTIFIER .)
+    $end            reduce using rule 14 (expression -> IDENTIFIER .)
+    RBRACE          reduce using rule 14 (expression -> IDENTIFIER .)
+    LBRACE          reduce using rule 14 (expression -> IDENTIFIER .)
+    RPAREN          reduce using rule 14 (expression -> IDENTIFIER .)
+    COMMA           reduce using rule 14 (expression -> IDENTIFIER .)
+
+
+state 26
+
+    (23) if_statement -> IF expression . block elseif_list else_block
+    (32) block -> . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 29
+
+    block                          shift and go to state 36
+
+state 27
+
+    (29) loop_statement -> REPEAT expression . block
+    (32) block -> . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 29
+
+    block                          shift and go to state 37
+
+state 28
+
+    (30) loop_statement -> LOOP block .
+
+    IDENTIFIER      reduce using rule 30 (loop_statement -> LOOP block .)
+    FN              reduce using rule 30 (loop_statement -> LOOP block .)
+    SHOW            reduce using rule 30 (loop_statement -> LOOP block .)
+    IF              reduce using rule 30 (loop_statement -> LOOP block .)
+    REPEAT          reduce using rule 30 (loop_statement -> LOOP block .)
+    LOOP            reduce using rule 30 (loop_statement -> LOOP block .)
+    CLASS           reduce using rule 30 (loop_statement -> LOOP block .)
+    $end            reduce using rule 30 (loop_statement -> LOOP block .)
+    RBRACE          reduce using rule 30 (loop_statement -> LOOP block .)
+
+
+state 29
+
+    (32) block -> LBRACE . statement_list RBRACE
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement_list statement
+    (4) statement -> . var_assign
+    (5) statement -> . func_def
+    (6) statement -> . func_call
+    (7) statement -> . show_stmt
+    (8) statement -> . if_statement
+    (9) statement -> . loop_statement
+    (10) statement -> . class_def
+    (11) var_assign -> . IDENTIFIER EQUALS expression
+    (15) func_def -> . FN IDENTIFIER LPAREN parameters RPAREN block
+    (19) func_call -> . IDENTIFIER LPAREN arguments RPAREN
+    (33) show_stmt -> . SHOW expression
+    (23) if_statement -> . IF expression block elseif_list else_block
+    (29) loop_statement -> . REPEAT expression block
+    (30) loop_statement -> . LOOP block
+    (31) class_def -> . CLASS IDENTIFIER block
+
+    IDENTIFIER      shift and go to state 11
+    FN              shift and go to state 12
+    SHOW            shift and go to state 13
+    IF              shift and go to state 14
+    REPEAT          shift and go to state 15
+    LOOP            shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement_list                 shift and go to state 38
+    statement                      shift and go to state 3
+    var_assign                     shift and go to state 4
+    func_def                       shift and go to state 5
+    func_call                      shift and go to state 6
+    show_stmt                      shift and go to state 7
+    if_statement                   shift and go to state 8
+    loop_statement                 shift and go to state 9
+    class_def                      shift and go to state 10
+
+state 30
+
+    (31) class_def -> CLASS IDENTIFIER . block
+    (32) block -> . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 29
+
+    block                          shift and go to state 39
+
+state 31
+
+    (11) var_assign -> IDENTIFIER EQUALS expression .
+
+    IDENTIFIER      reduce using rule 11 (var_assign -> IDENTIFIER EQUALS expression .)
+    FN              reduce using rule 11 (var_assign -> IDENTIFIER EQUALS expression .)
+    SHOW            reduce using rule 11 (var_assign -> IDENTIFIER EQUALS expression .)
+    IF              reduce using rule 11 (var_assign -> IDENTIFIER EQUALS expression .)
+    REPEAT          reduce using rule 11 (var_assign -> IDENTIFIER EQUALS expression .)
+    LOOP            reduce using rule 11 (var_assign -> IDENTIFIER EQUALS expression .)
+    CLASS           reduce using rule 11 (var_assign -> IDENTIFIER EQUALS expression .)
+    $end            reduce using rule 11 (var_assign -> IDENTIFIER EQUALS expression .)
+    RBRACE          reduce using rule 11 (var_assign -> IDENTIFIER EQUALS expression .)
+
+
+state 32
+
+    (19) func_call -> IDENTIFIER LPAREN arguments . RPAREN
+    (21) arguments -> arguments . COMMA expression
+
+    RPAREN          shift and go to state 40
+    COMMA           shift and go to state 41
+
+
+state 33
+
+    (20) arguments -> expression .
+
+    RPAREN          reduce using rule 20 (arguments -> expression .)
+    COMMA           reduce using rule 20 (arguments -> expression .)
+
+
+state 34
+
+    (22) arguments -> empty .
+
+    RPAREN          reduce using rule 22 (arguments -> empty .)
+    COMMA           reduce using rule 22 (arguments -> empty .)
+
+
+state 35
+
+    (15) func_def -> FN IDENTIFIER LPAREN . parameters RPAREN block
+    (16) parameters -> . IDENTIFIER
+    (17) parameters -> . parameters COMMA IDENTIFIER
+    (18) parameters -> . empty
+    (34) empty -> .
+
+    IDENTIFIER      shift and go to state 42
+    RPAREN          reduce using rule 34 (empty -> .)
+    COMMA           reduce using rule 34 (empty -> .)
+
+    parameters                     shift and go to state 43
+    empty                          shift and go to state 44
+
+state 36
+
+    (23) if_statement -> IF expression block . elseif_list else_block
+    (24) elseif_list -> . elseif_list elseif
+    (25) elseif_list -> . empty
+    (34) empty -> .
+
+    ELSE            reduce using rule 34 (empty -> .)
+    ELSEIF          reduce using rule 34 (empty -> .)
+    IDENTIFIER      reduce using rule 34 (empty -> .)
+    FN              reduce using rule 34 (empty -> .)
+    SHOW            reduce using rule 34 (empty -> .)
+    IF              reduce using rule 34 (empty -> .)
+    REPEAT          reduce using rule 34 (empty -> .)
+    LOOP            reduce using rule 34 (empty -> .)
+    CLASS           reduce using rule 34 (empty -> .)
+    $end            reduce using rule 34 (empty -> .)
+    RBRACE          reduce using rule 34 (empty -> .)
+
+    elseif_list                    shift and go to state 45
+    empty                          shift and go to state 46
+
+state 37
+
+    (29) loop_statement -> REPEAT expression block .
+
+    IDENTIFIER      reduce using rule 29 (loop_statement -> REPEAT expression block .)
+    FN              reduce using rule 29 (loop_statement -> REPEAT expression block .)
+    SHOW            reduce using rule 29 (loop_statement -> REPEAT expression block .)
+    IF              reduce using rule 29 (loop_statement -> REPEAT expression block .)
+    REPEAT          reduce using rule 29 (loop_statement -> REPEAT expression block .)
+    LOOP            reduce using rule 29 (loop_statement -> REPEAT expression block .)
+    CLASS           reduce using rule 29 (loop_statement -> REPEAT expression block .)
+    $end            reduce using rule 29 (loop_statement -> REPEAT expression block .)
+    RBRACE          reduce using rule 29 (loop_statement -> REPEAT expression block .)
+
+
+state 38
+
+    (32) block -> LBRACE statement_list . RBRACE
+    (3) statement_list -> statement_list . statement
+    (4) statement -> . var_assign
+    (5) statement -> . func_def
+    (6) statement -> . func_call
+    (7) statement -> . show_stmt
+    (8) statement -> . if_statement
+    (9) statement -> . loop_statement
+    (10) statement -> . class_def
+    (11) var_assign -> . IDENTIFIER EQUALS expression
+    (15) func_def -> . FN IDENTIFIER LPAREN parameters RPAREN block
+    (19) func_call -> . IDENTIFIER LPAREN arguments RPAREN
+    (33) show_stmt -> . SHOW expression
+    (23) if_statement -> . IF expression block elseif_list else_block
+    (29) loop_statement -> . REPEAT expression block
+    (30) loop_statement -> . LOOP block
+    (31) class_def -> . CLASS IDENTIFIER block
+
+    RBRACE          shift and go to state 47
+    IDENTIFIER      shift and go to state 11
+    FN              shift and go to state 12
+    SHOW            shift and go to state 13
+    IF              shift and go to state 14
+    REPEAT          shift and go to state 15
+    LOOP            shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement                      shift and go to state 18
+    var_assign                     shift and go to state 4
+    func_def                       shift and go to state 5
+    func_call                      shift and go to state 6
+    show_stmt                      shift and go to state 7
+    if_statement                   shift and go to state 8
+    loop_statement                 shift and go to state 9
+    class_def                      shift and go to state 10
+
+state 39
+
+    (31) class_def -> CLASS IDENTIFIER block .
+
+    IDENTIFIER      reduce using rule 31 (class_def -> CLASS IDENTIFIER block .)
+    FN              reduce using rule 31 (class_def -> CLASS IDENTIFIER block .)
+    SHOW            reduce using rule 31 (class_def -> CLASS IDENTIFIER block .)
+    IF              reduce using rule 31 (class_def -> CLASS IDENTIFIER block .)
+    REPEAT          reduce using rule 31 (class_def -> CLASS IDENTIFIER block .)
+    LOOP            reduce using rule 31 (class_def -> CLASS IDENTIFIER block .)
+    CLASS           reduce using rule 31 (class_def -> CLASS IDENTIFIER block .)
+    $end            reduce using rule 31 (class_def -> CLASS IDENTIFIER block .)
+    RBRACE          reduce using rule 31 (class_def -> CLASS IDENTIFIER block .)
+
+
+state 40
+
+    (19) func_call -> IDENTIFIER LPAREN arguments RPAREN .
+
+    IDENTIFIER      reduce using rule 19 (func_call -> IDENTIFIER LPAREN arguments RPAREN .)
+    FN              reduce using rule 19 (func_call -> IDENTIFIER LPAREN arguments RPAREN .)
+    SHOW            reduce using rule 19 (func_call -> IDENTIFIER LPAREN arguments RPAREN .)
+    IF              reduce using rule 19 (func_call -> IDENTIFIER LPAREN arguments RPAREN .)
+    REPEAT          reduce using rule 19 (func_call -> IDENTIFIER LPAREN arguments RPAREN .)
+    LOOP            reduce using rule 19 (func_call -> IDENTIFIER LPAREN arguments RPAREN .)
+    CLASS           reduce using rule 19 (func_call -> IDENTIFIER LPAREN arguments RPAREN .)
+    $end            reduce using rule 19 (func_call -> IDENTIFIER LPAREN arguments RPAREN .)
+    RBRACE          reduce using rule 19 (func_call -> IDENTIFIER LPAREN arguments RPAREN .)
+
+
+state 41
+
+    (21) arguments -> arguments COMMA . expression
+    (12) expression -> . NUMBER
+    (13) expression -> . STRING
+    (14) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    STRING          shift and go to state 24
+    IDENTIFIER      shift and go to state 25
+
+    expression                     shift and go to state 48
+
+state 42
+
+    (16) parameters -> IDENTIFIER .
+
+    RPAREN          reduce using rule 16 (parameters -> IDENTIFIER .)
+    COMMA           reduce using rule 16 (parameters -> IDENTIFIER .)
+
+
+state 43
+
+    (15) func_def -> FN IDENTIFIER LPAREN parameters . RPAREN block
+    (17) parameters -> parameters . COMMA IDENTIFIER
+
+    RPAREN          shift and go to state 49
+    COMMA           shift and go to state 50
+
+
+state 44
+
+    (18) parameters -> empty .
+
+    RPAREN          reduce using rule 18 (parameters -> empty .)
+    COMMA           reduce using rule 18 (parameters -> empty .)
+
+
+state 45
+
+    (23) if_statement -> IF expression block elseif_list . else_block
+    (24) elseif_list -> elseif_list . elseif
+    (27) else_block -> . ELSE block
+    (28) else_block -> . empty
+    (26) elseif -> . ELSEIF expression block
+    (34) empty -> .
+
+    ELSE            shift and go to state 53
+    ELSEIF          shift and go to state 55
+    IDENTIFIER      reduce using rule 34 (empty -> .)
+    FN              reduce using rule 34 (empty -> .)
+    SHOW            reduce using rule 34 (empty -> .)
+    IF              reduce using rule 34 (empty -> .)
+    REPEAT          reduce using rule 34 (empty -> .)
+    LOOP            reduce using rule 34 (empty -> .)
+    CLASS           reduce using rule 34 (empty -> .)
+    $end            reduce using rule 34 (empty -> .)
+    RBRACE          reduce using rule 34 (empty -> .)
+
+    else_block                     shift and go to state 51
+    elseif                         shift and go to state 52
+    empty                          shift and go to state 54
+
+state 46
+
+    (25) elseif_list -> empty .
+
+    ELSE            reduce using rule 25 (elseif_list -> empty .)
+    ELSEIF          reduce using rule 25 (elseif_list -> empty .)
+    IDENTIFIER      reduce using rule 25 (elseif_list -> empty .)
+    FN              reduce using rule 25 (elseif_list -> empty .)
+    SHOW            reduce using rule 25 (elseif_list -> empty .)
+    IF              reduce using rule 25 (elseif_list -> empty .)
+    REPEAT          reduce using rule 25 (elseif_list -> empty .)
+    LOOP            reduce using rule 25 (elseif_list -> empty .)
+    CLASS           reduce using rule 25 (elseif_list -> empty .)
+    $end            reduce using rule 25 (elseif_list -> empty .)
+    RBRACE          reduce using rule 25 (elseif_list -> empty .)
+
+
+state 47
+
+    (32) block -> LBRACE statement_list RBRACE .
+
+    IDENTIFIER      reduce using rule 32 (block -> LBRACE statement_list RBRACE .)
+    FN              reduce using rule 32 (block -> LBRACE statement_list RBRACE .)
+    SHOW            reduce using rule 32 (block -> LBRACE statement_list RBRACE .)
+    IF              reduce using rule 32 (block -> LBRACE statement_list RBRACE .)
+    REPEAT          reduce using rule 32 (block -> LBRACE statement_list RBRACE .)
+    LOOP            reduce using rule 32 (block -> LBRACE statement_list RBRACE .)
+    CLASS           reduce using rule 32 (block -> LBRACE statement_list RBRACE .)
+    $end            reduce using rule 32 (block -> LBRACE statement_list RBRACE .)
+    RBRACE          reduce using rule 32 (block -> LBRACE statement_list RBRACE .)
+    ELSE            reduce using rule 32 (block -> LBRACE statement_list RBRACE .)
+    ELSEIF          reduce using rule 32 (block -> LBRACE statement_list RBRACE .)
+
+
+state 48
+
+    (21) arguments -> arguments COMMA expression .
+
+    RPAREN          reduce using rule 21 (arguments -> arguments COMMA expression .)
+    COMMA           reduce using rule 21 (arguments -> arguments COMMA expression .)
+
+
+state 49
+
+    (15) func_def -> FN IDENTIFIER LPAREN parameters RPAREN . block
+    (32) block -> . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 29
+
+    block                          shift and go to state 56
+
+state 50
+
+    (17) parameters -> parameters COMMA . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 57
+
+
+state 51
+
+    (23) if_statement -> IF expression block elseif_list else_block .
+
+    IDENTIFIER      reduce using rule 23 (if_statement -> IF expression block elseif_list else_block .)
+    FN              reduce using rule 23 (if_statement -> IF expression block elseif_list else_block .)
+    SHOW            reduce using rule 23 (if_statement -> IF expression block elseif_list else_block .)
+    IF              reduce using rule 23 (if_statement -> IF expression block elseif_list else_block .)
+    REPEAT          reduce using rule 23 (if_statement -> IF expression block elseif_list else_block .)
+    LOOP            reduce using rule 23 (if_statement -> IF expression block elseif_list else_block .)
+    CLASS           reduce using rule 23 (if_statement -> IF expression block elseif_list else_block .)
+    $end            reduce using rule 23 (if_statement -> IF expression block elseif_list else_block .)
+    RBRACE          reduce using rule 23 (if_statement -> IF expression block elseif_list else_block .)
+
+
+state 52
+
+    (24) elseif_list -> elseif_list elseif .
+
+    ELSE            reduce using rule 24 (elseif_list -> elseif_list elseif .)
+    ELSEIF          reduce using rule 24 (elseif_list -> elseif_list elseif .)
+    IDENTIFIER      reduce using rule 24 (elseif_list -> elseif_list elseif .)
+    FN              reduce using rule 24 (elseif_list -> elseif_list elseif .)
+    SHOW            reduce using rule 24 (elseif_list -> elseif_list elseif .)
+    IF              reduce using rule 24 (elseif_list -> elseif_list elseif .)
+    REPEAT          reduce using rule 24 (elseif_list -> elseif_list elseif .)
+    LOOP            reduce using rule 24 (elseif_list -> elseif_list elseif .)
+    CLASS           reduce using rule 24 (elseif_list -> elseif_list elseif .)
+    $end            reduce using rule 24 (elseif_list -> elseif_list elseif .)
+    RBRACE          reduce using rule 24 (elseif_list -> elseif_list elseif .)
+
+
+state 53
+
+    (27) else_block -> ELSE . block
+    (32) block -> . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 29
+
+    block                          shift and go to state 58
+
+state 54
+
+    (28) else_block -> empty .
+
+    IDENTIFIER      reduce using rule 28 (else_block -> empty .)
+    FN              reduce using rule 28 (else_block -> empty .)
+    SHOW            reduce using rule 28 (else_block -> empty .)
+    IF              reduce using rule 28 (else_block -> empty .)
+    REPEAT          reduce using rule 28 (else_block -> empty .)
+    LOOP            reduce using rule 28 (else_block -> empty .)
+    CLASS           reduce using rule 28 (else_block -> empty .)
+    $end            reduce using rule 28 (else_block -> empty .)
+    RBRACE          reduce using rule 28 (else_block -> empty .)
+
+
+state 55
+
+    (26) elseif -> ELSEIF . expression block
+    (12) expression -> . NUMBER
+    (13) expression -> . STRING
+    (14) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    STRING          shift and go to state 24
+    IDENTIFIER      shift and go to state 25
+
+    expression                     shift and go to state 59
+
+state 56
+
+    (15) func_def -> FN IDENTIFIER LPAREN parameters RPAREN block .
+
+    IDENTIFIER      reduce using rule 15 (func_def -> FN IDENTIFIER LPAREN parameters RPAREN block .)
+    FN              reduce using rule 15 (func_def -> FN IDENTIFIER LPAREN parameters RPAREN block .)
+    SHOW            reduce using rule 15 (func_def -> FN IDENTIFIER LPAREN parameters RPAREN block .)
+    IF              reduce using rule 15 (func_def -> FN IDENTIFIER LPAREN parameters RPAREN block .)
+    REPEAT          reduce using rule 15 (func_def -> FN IDENTIFIER LPAREN parameters RPAREN block .)
+    LOOP            reduce using rule 15 (func_def -> FN IDENTIFIER LPAREN parameters RPAREN block .)
+    CLASS           reduce using rule 15 (func_def -> FN IDENTIFIER LPAREN parameters RPAREN block .)
+    $end            reduce using rule 15 (func_def -> FN IDENTIFIER LPAREN parameters RPAREN block .)
+    RBRACE          reduce using rule 15 (func_def -> FN IDENTIFIER LPAREN parameters RPAREN block .)
+
+
+state 57
+
+    (17) parameters -> parameters COMMA IDENTIFIER .
+
+    RPAREN          reduce using rule 17 (parameters -> parameters COMMA IDENTIFIER .)
+    COMMA           reduce using rule 17 (parameters -> parameters COMMA IDENTIFIER .)
+
+
+state 58
+
+    (27) else_block -> ELSE block .
+
+    IDENTIFIER      reduce using rule 27 (else_block -> ELSE block .)
+    FN              reduce using rule 27 (else_block -> ELSE block .)
+    SHOW            reduce using rule 27 (else_block -> ELSE block .)
+    IF              reduce using rule 27 (else_block -> ELSE block .)
+    REPEAT          reduce using rule 27 (else_block -> ELSE block .)
+    LOOP            reduce using rule 27 (else_block -> ELSE block .)
+    CLASS           reduce using rule 27 (else_block -> ELSE block .)
+    $end            reduce using rule 27 (else_block -> ELSE block .)
+    RBRACE          reduce using rule 27 (else_block -> ELSE block .)
+
+
+state 59
+
+    (26) elseif -> ELSEIF expression . block
+    (32) block -> . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 29
+
+    block                          shift and go to state 60
+
+state 60
+
+    (26) elseif -> ELSEIF expression block .
+
+    ELSE            reduce using rule 26 (elseif -> ELSEIF expression block .)
+    ELSEIF          reduce using rule 26 (elseif -> ELSEIF expression block .)
+    IDENTIFIER      reduce using rule 26 (elseif -> ELSEIF expression block .)
+    FN              reduce using rule 26 (elseif -> ELSEIF expression block .)
+    SHOW            reduce using rule 26 (elseif -> ELSEIF expression block .)
+    IF              reduce using rule 26 (elseif -> ELSEIF expression block .)
+    REPEAT          reduce using rule 26 (elseif -> ELSEIF expression block .)
+    LOOP            reduce using rule 26 (elseif -> ELSEIF expression block .)
+    CLASS           reduce using rule 26 (elseif -> ELSEIF expression block .)
+    $end            reduce using rule 26 (elseif -> ELSEIF expression block .)
+    RBRACE          reduce using rule 26 (elseif -> ELSEIF expression block .)
+

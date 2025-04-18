@@ -26,7 +26,7 @@ to_num converts to an integer.
 to_str converts to a string.
 to_float converts to a float.
 
-1.3 Comments 
+1.3 Comments
 
 1.3.1 Single-Line Comments (#)
 ![image100](img/image-100.png)
