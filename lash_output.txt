@@ -1,0 +1,72 @@
+Lash Compiler Test
+=================
+
+Input Program:
+-------------
+
+    # This is a Lash program
+    
+    # Variable declarations
+    x 42
+    name "John"
+    
+    # Output
+    show "Hello, world!"
+    show name
+    
+    # Control flow
+    if x > 10 {
+        show "x is greater than 10"
+    } else {
+        show "x is less than or equal to 10"
+    }
+    
+    # Loop
+    repeat 5 {
+        show "Loop iteration"
+    }
+    
+
+Tokens:
+------
+Line 5: IDENTIFIER 'x'
+Line 5: NUMBER '42'
+Line 6: IDENTIFIER 'name'
+Line 6: STRING 'John'
+Line 9: SHOW 'show'
+Line 9: STRING 'Hello, world!'
+Line 10: SHOW 'show'
+Line 10: IDENTIFIER 'name'
+Line 13: IF 'if'
+Line 13: IDENTIFIER 'x'
+Line 13: GT '>'
+Line 13: NUMBER '10'
+Line 13: LBRACE '{'
+Line 14: SHOW 'show'
+Line 14: STRING 'x is greater than 10'
+Line 15: RBRACE '}'
+Line 15: ELSE 'else'
+Line 15: LBRACE '{'
+Line 16: SHOW 'show'
+Line 16: STRING 'x is less than or equal to 10'
+Line 17: RBRACE '}'
+Line 20: REPEAT 'repeat'
+Line 20: NUMBER '5'
+Line 20: LBRACE '{'
+Line 21: SHOW 'show'
+Line 21: STRING 'Loop iteration'
+Line 22: RBRACE '}'
+
+AST (Abstract Syntax Tree):
+-------------------------
+Variable: x = 42
+Variable: name = "John"
+Show: "Hello, world!"
+Show: name
+If: "condition"
+Then: "then block"
+Show: "x is less than or equal to 10"
+Repeat 5 times:
+"loop body"
+
+Compilation complete

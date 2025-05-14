@@ -1,0 +1,97 @@
+# Object-Oriented Programming example in Lash
+
+# Define a base class for Animals
+class Animal {
+    # Constructor method
+    fn __init__(name, species) {
+        # Attributes without self
+        this.name name
+        this.species species
+    }
+    
+    # Method to get information about the animal
+    fn info() {
+        return "Animal: " + this.name + " (" + this.species + ")"
+    }
+    
+    # Method to make a sound
+    fn make_sound() {
+        return "Some generic animal sound"
+    }
+}
+
+# Define a Dog class that inherits from Animal
+class Dog {
+    fn __init__(name, breed) {
+        # Call parent constructor with species "Dog"
+        Animal.__init__(this, name, "Dog")
+        this.breed breed
+    }
+    
+    # Override the make_sound method
+    fn make_sound() {
+        return "Woof!"
+    }
+    
+    # Add a new method specific to Dog
+    fn fetch() {
+        return this.name + " is fetching the ball!"
+    }
+    
+    # Override info method to include breed
+    fn info() {
+        return "Dog: " + this.name + " (" + this.breed + ")"
+    }
+}
+
+# Define a Cat class that inherits from Animal
+class Cat {
+    fn __init__(name, color) {
+        # Call parent constructor with species "Cat"
+        Animal.__init__(this, name, "Cat")
+        this.color color
+    }
+    
+    # Override the make_sound method
+    fn make_sound() {
+        return "Meow!"
+    }
+    
+    # Add a new method specific to Cat
+    fn purr() {
+        return this.name + " is purring..."
+    }
+    
+    # Override info method to include color
+    fn info() {
+        return "Cat: " + this.name + " (" + this.color + ")"
+    }
+}
+
+# Create instances of these classes
+my_dog Dog("Buddy", "Golden Retriever")
+my_cat Cat("Whiskers", "Tabby")
+
+# Display information about each animal
+show my_dog.info()
+show my_cat.info()
+
+# Make them produce sounds
+show my_dog.name + " says: " + my_dog.make_sound()
+show my_cat.name + " says: " + my_cat.make_sound()
+
+# Call specific methods
+show my_dog.fetch()
+show my_cat.purr()
+
+# Create an array of animals
+animals [my_dog, my_cat]
+
+# Loop through the array and call methods
+show "\nAll animals:"
+repeat len(animals) {
+    animal animals[_index]
+    show animal.info()
+    show animal.make_sound()
+    show "---"
+} 
