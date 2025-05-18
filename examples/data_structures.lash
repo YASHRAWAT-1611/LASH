@@ -1,0 +1,104 @@
+# Data Structures in Lash
+
+show "=== Arrays ==="
+# Creating an array
+numbers [1, 2, 3, 4, 5]
+show "Original array: " + to_str(numbers)
+
+# Accessing elements
+show "First element: " + to_str(numbers[0])
+show "Last element: " + to_str(numbers[len(numbers) - 1])
+
+# Modifying elements
+numbers[2] 10
+show "Modified array: " + to_str(numbers)
+
+# Array operations
+append(numbers, 6)
+show "After append: " + to_str(numbers)
+
+remove(numbers, 10)
+show "After remove: " + to_str(numbers)
+
+popped_value pop(numbers)
+show "Popped value: " + to_str(popped_value)
+show "After pop: " + to_str(numbers)
+
+insert(numbers, 2, 99)
+show "After insert: " + to_str(numbers)
+
+sorted_numbers sort(numbers)
+show "Sorted: " + to_str(sorted_numbers)
+
+reversed_numbers reverse(numbers)
+show "Reversed: " + to_str(reversed_numbers)
+
+show "Index of 99: " + to_str(index(numbers, 99))
+show "Count of 99: " + to_str(count(numbers, 99))
+
+show "\n=== Sets ==="
+# Creating a set (no duplicates)
+my_set [1, 2, 3, 3, 2, 1]
+show "Original set values: " + to_str(my_set)
+
+# Set operations
+other_set [3, 4, 5]
+union_set union(my_set, other_set)
+show "Union: " + to_str(union_set)
+
+intersection_set intersection(my_set, other_set)
+show "Intersection: " + to_str(intersection_set)
+
+difference_set difference(my_set, other_set)
+show "Difference: " + to_str(difference_set)
+
+show "\n=== Dictionaries ==="
+# Creating a dictionary
+person {
+  "name": "Alice",
+  "age": 30,
+  "city": "New York"
+}
+show "Dictionary: " + to_str(person)
+
+# Accessing elements
+show "Name: " + person["name"]
+show "Age: " + to_str(person["age"])
+
+# Modifying elements
+person["age"] 31
+show "Updated age: " + to_str(person["age"])
+
+# Adding new key-value pair
+person["job"] "Engineer"
+show "Updated dictionary: " + to_str(person)
+
+# Checking if key exists
+has_job contains(person, "job")
+show "Has job? " + to_str(has_job)
+
+show "\n=== Multi-dimensional Arrays ==="
+# Creating a 2D matrix
+matrix [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]
+show "Matrix:"
+
+# Display matrix
+repeat len(matrix) {
+  row matrix[_index]
+  row_str ""
+  repeat len(row) {
+    row_str row_str + to_str(row[_index]) + " "
+  }
+  show row_str
+}
+
+# Accessing elements
+show "Matrix[1][2]: " + to_str(matrix[1][2])
+
+# Modifying elements
+matrix[0][0] 99
+show "Modified matrix[0][0]: " + to_str(matrix[0][0]) 

@@ -1,0 +1,51 @@
+# Hello World program in Lash
+
+# Basic output
+show "Hello, World!"
+
+# Variable and string concatenation
+greeting "Hello"
+name "Lash"
+show greeting + ", " + name + "!"
+
+# User input
+your_name ask "What's your name? "
+show "Nice to meet you, " + your_name + "!"
+
+# Simple arithmetic
+a 5
+b 7
+sum a + b
+show to_str(a) + " + " + to_str(b) + " = " + to_str(sum)
+
+# Function definition
+fn greet(person) {
+    return "Hello, " + person + "!"
+}
+
+# Function call
+message greet(your_name)
+show message
+
+# Conditional execution
+if sum > 10 {
+    show "That's a big number!"
+} else {
+    show "That's a small number!"
+}
+
+# Loop example
+show "Counting from 1 to 5:"
+repeat 5 {
+    show _index + 1  # _index is zero-based
+}
+
+# Array example
+fruits ["apple", "banana", "cherry"]
+show "I have " + to_str(len(fruits)) + " fruits:"
+
+count 1
+repeat len(fruits) {
+    show to_str(count) + ". " + fruits[count-1]
+    count count + 1
+} 
