@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'AND ASK CLASS COMMA DIVIDE ELSE ELSEIF EQEQ EQUALS FN GE GT IDENTIFIER IF LBRACE LE LOOP LPAREN LT MINUS MOD NEQ NOT NUMBER OR PLUS RBRACE REPEAT RPAREN SHOW STRING TIMESprogram : statement_liststatement_list : statement\n                      | statement_list statementstatement : var_assign\n                 | func_def\n                 | func_call\n                 | show_stmt\n                 | if_statement\n                 | loop_statement\n                 | class_defvar_assign : IDENTIFIER EQUALS expressionexpression : NUMBER\n                  | STRING\n                  | IDENTIFIERfunc_def : FN IDENTIFIER LPAREN parameters RPAREN blockparameters : IDENTIFIER\n                  | parameters COMMA IDENTIFIER\n                  | emptyfunc_call : IDENTIFIER LPAREN arguments RPARENarguments : expression\n                 | arguments COMMA expression\n                 | emptyif_statement : IF expression block elseif_list else_blockelseif_list : elseif_list elseif\n                   | emptyelseif : ELSEIF expression blockelse_block : ELSE block\n                  | emptyloop_statement : REPEAT expression block\n                      | LOOP blockclass_def : CLASS IDENTIFIER blockblock : LBRACE statement_list RBRACEshow_stmt : SHOW expressionempty :'
+_lr_signature = 'leftORleftANDleftEQEQNEQleftGTLTGELEleftPLUSMINUSleftTIMESDIVIDEMODAND ASK CLASS COMMA DIVIDE ELSE ELSEIF EQEQ EQUALS FN GE GT IDENTIFIER IF LBRACE LE LOOP LPAREN LT MINUS MOD NEQ NOT NUMBER OR PLUS RBRACE REPEAT RPAREN SHOW STRING TIMESprogram : statement_liststatement_list : statement\n                      | statement_list statementstatement : var_decl\n                 | var_assign\n                 | func_def\n                 | func_call\n                 | show_stmt\n                 | if_statement\n                 | loop_statement\n                 | class_defvar_decl : IDENTIFIER expressionvar_assign : IDENTIFIER EQUALS expressionfunc_def : FN IDENTIFIER LPAREN parameters RPAREN blockparameters : IDENTIFIER\n                  | parameters COMMA IDENTIFIER\n                  | emptyfunc_call : IDENTIFIER LPAREN arguments RPARENarguments : expression\n                 | arguments COMMA expression\n                 | emptyshow_stmt : SHOW expressionif_statement : IF expression block elseif_list else_blockelseif_list : elseif_list elseif\n                   | emptyelseif : ELSEIF expression blockelse_block : ELSE block\n                  | emptyloop_statement : REPEAT expression block\n                      | LOOP blockclass_def : CLASS IDENTIFIER blockblock : LBRACE statement_list RBRACEexpression : expression PLUS expression\n                  | expression MINUS expression\n                  | expression TIMES expression\n                  | expression DIVIDE expression\n                  | expression MOD expression\n                  | expression GT expression\n                  | expression LT expression\n                  | expression GE expression\n                  | expression LE expression\n                  | expression EQEQ expression\n                  | expression NEQ expression\n                  | expression AND expression\n                  | expression OR expressionexpression : LPAREN expression RPARENexpression : NUMBER\n                  | STRINGexpression : IDENTIFIERempty :'
     
-_lr_action_items = {'IDENTIFIER':([0,2,3,4,5,6,7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,28,29,31,35,36,37,38,39,40,41,45,46,47,50,51,52,54,55,56,58,60,],[11,11,-2,-4,-5,-6,-7,-8,-9,-10,21,25,25,25,30,-3,25,25,-33,-12,-13,-14,-30,11,-11,42,-34,-29,11,-31,-19,25,-34,-25,-32,57,-23,-24,-28,25,-15,-27,-26,]),'FN':([0,2,3,4,5,6,7,8,9,10,18,22,23,24,25,28,29,31,36,37,38,39,40,45,46,47,51,52,54,56,58,60,],[12,12,-2,-4,-5,-6,-7,-8,-9,-10,-3,-33,-12,-13,-14,-30,12,-11,-34,-29,12,-31,-19,-34,-25,-32,-23,-24,-28,-15,-27,-26,]),'SHOW':([0,2,3,4,5,6,7,8,9,10,18,22,23,24,25,28,29,31,36,37,38,39,40,45,46,47,51,52,54,56,58,60,],[13,13,-2,-4,-5,-6,-7,-8,-9,-10,-3,-33,-12,-13,-14,-30,13,-11,-34,-29,13,-31,-19,-34,-25,-32,-23,-24,-28,-15,-27,-26,]),'IF':([0,2,3,4,5,6,7,8,9,10,18,22,23,24,25,28,29,31,36,37,38,39,40,45,46,47,51,52,54,56,58,60,],[14,14,-2,-4,-5,-6,-7,-8,-9,-10,-3,-33,-12,-13,-14,-30,14,-11,-34,-29,14,-31,-19,-34,-25,-32,-23,-24,-28,-15,-27,-26,]),'REPEAT':([0,2,3,4,5,6,7,8,9,10,18,22,23,24,25,28,29,31,36,37,38,39,40,45,46,47,51,52,54,56,58,60,],[15,15,-2,-4,-5,-6,-7,-8,-9,-10,-3,-33,-12,-13,-14,-30,15,-11,-34,-29,15,-31,-19,-34,-25,-32,-23,-24,-28,-15,-27,-26,]),'LOOP':([0,2,3,4,5,6,7,8,9,10,18,22,23,24,25,28,29,31,36,37,38,39,40,45,46,47,51,52,54,56,58,60,],[16,16,-2,-4,-5,-6,-7,-8,-9,-10,-3,-33,-12,-13,-14,-30,16,-11,-34,-29,16,-31,-19,-34,-25,-32,-23,-24,-28,-15,-27,-26,]),'CLASS':([0,2,3,4,5,6,7,8,9,10,18,22,23,24,25,28,29,31,36,37,38,39,40,45,46,47,51,52,54,56,58,60,],[17,17,-2,-4,-5,-6,-7,-8,-9,-10,-3,-33,-12,-13,-14,-30,17,-11,-34,-29,17,-31,-19,-34,-25,-32,-23,-24,-28,-15,-27,-26,]),'$end':([1,2,3,4,5,6,7,8,9,10,18,22,23,24,25,28,31,36,37,39,40,45,46,47,51,52,54,56,58,60,],[0,-1,-2,-4,-5,-6,-7,-8,-9,-10,-3,-33,-12,-13,-14,-30,-11,-34,-29,-31,-19,-34,-25,-32,-23,-24,-28,-15,-27,-26,]),'RBRACE':([3,4,5,6,7,8,9,10,18,22,23,24,25,28,31,36,37,38,39,40,45,46,47,51,52,54,56,58,60,],[-2,-4,-5,-6,-7,-8,-9,-10,-3,-33,-12,-13,-14,-30,-11,-34,-29,47,-31,-19,-34,-25,-32,-23,-24,-28,-15,-27,-26,]),'EQUALS':([11,],[19,]),'LPAREN':([11,21,],[20,35,]),'NUMBER':([13,14,15,19,20,41,55,],[23,23,23,23,23,23,23,]),'STRING':([13,14,15,19,20,41,55,],[24,24,24,24,24,24,24,]),'LBRACE':([16,23,24,25,26,27,30,49,53,59,],[29,-12,-13,-14,29,29,29,29,29,29,]),'RPAREN':([20,23,24,25,32,33,34,35,42,43,44,48,57,],[-34,-12,-13,-14,40,-20,-22,-34,-16,49,-18,-21,-17,]),'COMMA':([20,23,24,25,32,33,34,35,42,43,44,48,57,],[-34,-12,-13,-14,41,-20,-22,-34,-16,50,-18,-21,-17,]),'ELSE':([36,45,46,47,52,60,],[-34,53,-25,-32,-24,-26,]),'ELSEIF':([36,45,46,47,52,60,],[-34,55,-25,-32,-24,-26,]),}
+_lr_action_items = {'IDENTIFIER':([0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,27,28,31,32,34,35,36,37,38,39,40,41,42,43,44,45,46,47,51,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,76,77,78,81,82,83,85,86,87,89,91,],[12,12,-2,-4,-5,-6,-7,-8,-9,-10,-11,20,26,20,20,20,33,-3,-49,-12,20,20,-47,-48,-22,20,-30,12,20,20,20,20,20,20,20,20,20,20,20,20,20,-13,73,-50,-29,12,-31,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-18,20,-46,-50,-25,-32,88,-23,-24,-28,20,-14,-27,-26,]),'FN':([0,2,3,4,5,6,7,8,9,10,11,19,20,21,24,25,27,31,32,47,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,72,76,77,78,82,83,85,87,89,91,],[13,13,-2,-4,-5,-6,-7,-8,-9,-10,-11,-3,-49,-12,-47,-48,-22,-30,13,-13,-50,-29,13,-31,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-18,-46,-50,-25,-32,-23,-24,-28,-14,-27,-26,]),'SHOW':([0,2,3,4,5,6,7,8,9,10,11,19,20,21,24,25,27,31,32,47,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,72,76,77,78,82,83,85,87,89,91,],[14,14,-2,-4,-5,-6,-7,-8,-9,-10,-11,-3,-49,-12,-47,-48,-22,-30,14,-13,-50,-29,14,-31,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-18,-46,-50,-25,-32,-23,-24,-28,-14,-27,-26,]),'IF':([0,2,3,4,5,6,7,8,9,10,11,19,20,21,24,25,27,31,32,47,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,72,76,77,78,82,83,85,87,89,91,],[15,15,-2,-4,-5,-6,-7,-8,-9,-10,-11,-3,-49,-12,-47,-48,-22,-30,15,-13,-50,-29,15,-31,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-18,-46,-50,-25,-32,-23,-24,-28,-14,-27,-26,]),'REPEAT':([0,2,3,4,5,6,7,8,9,10,11,19,20,21,24,25,27,31,32,47,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,72,76,77,78,82,83,85,87,89,91,],[16,16,-2,-4,-5,-6,-7,-8,-9,-10,-11,-3,-49,-12,-47,-48,-22,-30,16,-13,-50,-29,16,-31,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-18,-46,-50,-25,-32,-23,-24,-28,-14,-27,-26,]),'LOOP':([0,2,3,4,5,6,7,8,9,10,11,19,20,21,24,25,27,31,32,47,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,72,76,77,78,82,83,85,87,89,91,],[17,17,-2,-4,-5,-6,-7,-8,-9,-10,-11,-3,-49,-12,-47,-48,-22,-30,17,-13,-50,-29,17,-31,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-18,-46,-50,-25,-32,-23,-24,-28,-14,-27,-26,]),'CLASS':([0,2,3,4,5,6,7,8,9,10,11,19,20,21,24,25,27,31,32,47,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,72,76,77,78,82,83,85,87,89,91,],[18,18,-2,-4,-5,-6,-7,-8,-9,-10,-11,-3,-49,-12,-47,-48,-22,-30,18,-13,-50,-29,18,-31,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-18,-46,-50,-25,-32,-23,-24,-28,-14,-27,-26,]),'$end':([1,2,3,4,5,6,7,8,9,10,11,19,20,21,24,25,27,31,47,53,54,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,72,76,77,78,82,83,85,87,89,91,],[0,-1,-2,-4,-5,-6,-7,-8,-9,-10,-11,-3,-49,-12,-47,-48,-22,-30,-13,-50,-29,-31,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-18,-46,-50,-25,-32,-23,-24,-28,-14,-27,-26,]),'RBRACE':([3,4,5,6,7,8,9,10,11,19,20,21,24,25,27,31,47,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,72,76,77,78,82,83,85,87,89,91,],[-2,-4,-5,-6,-7,-8,-9,-10,-11,-3,-49,-12,-47,-48,-22,-30,-13,-50,-29,78,-31,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-18,-46,-50,-25,-32,-23,-24,-28,-14,-27,-26,]),'EQUALS':([12,],[22,]),'LPAREN':([12,14,15,16,22,23,26,28,34,35,36,37,38,39,40,41,42,43,44,45,46,71,86,],[23,28,28,28,28,28,51,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,]),'NUMBER':([12,14,15,16,22,23,28,34,35,36,37,38,39,40,41,42,43,44,45,46,71,86,],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,]),'STRING':([12,14,15,16,22,23,28,34,35,36,37,38,39,40,41,42,43,44,45,46,71,86,],[25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,]),'LBRACE':([17,20,24,25,29,30,33,57,58,59,60,61,62,63,64,65,66,67,68,69,72,80,84,90,],[32,-49,-47,-48,32,32,32,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,32,32,32,]),'PLUS':([20,21,24,25,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,79,90,],[-49,34,-47,-48,34,34,34,34,34,34,-33,-34,-35,-36,-37,34,34,34,34,34,34,34,34,-46,34,34,]),'MINUS':([20,21,24,25,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,79,90,],[-49,35,-47,-48,35,35,35,35,35,35,-33,-34,-35,-36,-37,35,35,35,35,35,35,35,35,-46,35,35,]),'TIMES':([20,21,24,25,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,79,90,],[-49,36,-47,-48,36,36,36,36,36,36,36,36,-35,-36,-37,36,36,36,36,36,36,36,36,-46,36,36,]),'DIVIDE':([20,21,24,25,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,79,90,],[-49,37,-47,-48,37,37,37,37,37,37,37,37,-35,-36,-37,37,37,37,37,37,37,37,37,-46,37,37,]),'MOD':([20,21,24,25,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,79,90,],[-49,38,-47,-48,38,38,38,38,38,38,38,38,-35,-36,-37,38,38,38,38,38,38,38,38,-46,38,38,]),'GT':([20,21,24,25,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,79,90,],[-49,39,-47,-48,39,39,39,39,39,39,-33,-34,-35,-36,-37,-38,-39,-40,-41,39,39,39,39,-46,39,39,]),'LT':([20,21,24,25,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,79,90,],[-49,40,-47,-48,40,40,40,40,40,40,-33,-34,-35,-36,-37,-38,-39,-40,-41,40,40,40,40,-46,40,40,]),'GE':([20,21,24,25,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,79,90,],[-49,41,-47,-48,41,41,41,41,41,41,-33,-34,-35,-36,-37,-38,-39,-40,-41,41,41,41,41,-46,41,41,]),'LE':([20,21,24,25,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,79,90,],[-49,42,-47,-48,42,42,42,42,42,42,-33,-34,-35,-36,-37,-38,-39,-40,-41,42,42,42,42,-46,42,42,]),'EQEQ':([20,21,24,25,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,79,90,],[-49,43,-47,-48,43,43,43,43,43,43,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,43,43,-46,43,43,]),'NEQ':([20,21,24,25,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,79,90,],[-49,44,-47,-48,44,44,44,44,44,44,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,44,44,-46,44,44,]),'AND':([20,21,24,25,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,79,90,],[-49,45,-47,-48,45,45,45,45,45,45,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,45,-46,45,45,]),'OR':([20,21,24,25,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,79,90,],[-49,46,-47,-48,46,46,46,46,46,46,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,46,46,]),'RPAREN':([20,23,24,25,48,49,50,51,52,57,58,59,60,61,62,63,64,65,66,67,68,69,72,73,74,75,79,88,],[-49,-50,-47,-48,70,72,-21,-50,72,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-15,80,-17,-20,-16,]),'COMMA':([20,23,24,25,48,49,50,51,57,58,59,60,61,62,63,64,65,66,67,68,69,72,73,74,75,79,88,],[-49,-50,-47,-48,71,-19,-21,-50,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-15,81,-17,-20,-16,]),'ELSE':([53,76,77,78,83,91,],[-50,84,-25,-32,-24,-26,]),'ELSEIF':([53,76,77,78,83,91,],[-50,86,-25,-32,-24,-26,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'program':([0,],[1,]),'statement_list':([0,29,],[2,38,]),'statement':([0,2,29,38,],[3,18,3,18,]),'var_assign':([0,2,29,38,],[4,4,4,4,]),'func_def':([0,2,29,38,],[5,5,5,5,]),'func_call':([0,2,29,38,],[6,6,6,6,]),'show_stmt':([0,2,29,38,],[7,7,7,7,]),'if_statement':([0,2,29,38,],[8,8,8,8,]),'loop_statement':([0,2,29,38,],[9,9,9,9,]),'class_def':([0,2,29,38,],[10,10,10,10,]),'expression':([13,14,15,19,20,41,55,],[22,26,27,31,33,48,59,]),'block':([16,26,27,30,49,53,59,],[28,36,37,39,56,58,60,]),'arguments':([20,],[32,]),'empty':([20,35,36,45,],[34,44,46,54,]),'parameters':([35,],[43,]),'elseif_list':([36,],[45,]),'else_block':([45,],[51,]),'elseif':([45,],[52,]),}
+_lr_goto_items = {'program':([0,],[1,]),'statement_list':([0,32,],[2,55,]),'statement':([0,2,32,55,],[3,19,3,19,]),'var_decl':([0,2,32,55,],[4,4,4,4,]),'var_assign':([0,2,32,55,],[5,5,5,5,]),'func_def':([0,2,32,55,],[6,6,6,6,]),'func_call':([0,2,32,55,],[7,7,7,7,]),'show_stmt':([0,2,32,55,],[8,8,8,8,]),'if_statement':([0,2,32,55,],[9,9,9,9,]),'loop_statement':([0,2,32,55,],[10,10,10,10,]),'class_def':([0,2,32,55,],[11,11,11,11,]),'expression':([12,14,15,16,22,23,28,34,35,36,37,38,39,40,41,42,43,44,45,46,71,86,],[21,27,29,30,47,49,52,57,58,59,60,61,62,63,64,65,66,67,68,69,79,90,]),'block':([17,29,30,33,80,84,90,],[31,53,54,56,87,89,91,]),'arguments':([23,],[48,]),'empty':([23,51,53,76,],[50,75,77,85,]),'parameters':([51,],[74,]),'elseif_list':([53,],[76,]),'else_block':([76,],[82,]),'elseif':([76,],[83,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,38 +27,54 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> program","S'",1,None,None,None),
-  ('program -> statement_list','program',1,'p_program','parser.py',6),
-  ('statement_list -> statement','statement_list',1,'p_statement_list','parser.py',10),
-  ('statement_list -> statement_list statement','statement_list',2,'p_statement_list','parser.py',11),
-  ('statement -> var_assign','statement',1,'p_statement','parser.py',16),
-  ('statement -> func_def','statement',1,'p_statement','parser.py',17),
-  ('statement -> func_call','statement',1,'p_statement','parser.py',18),
-  ('statement -> show_stmt','statement',1,'p_statement','parser.py',19),
-  ('statement -> if_statement','statement',1,'p_statement','parser.py',20),
-  ('statement -> loop_statement','statement',1,'p_statement','parser.py',21),
-  ('statement -> class_def','statement',1,'p_statement','parser.py',22),
-  ('var_assign -> IDENTIFIER EQUALS expression','var_assign',3,'p_var_assign','parser.py',27),
-  ('expression -> NUMBER','expression',1,'p_expression','parser.py',32),
-  ('expression -> STRING','expression',1,'p_expression','parser.py',33),
-  ('expression -> IDENTIFIER','expression',1,'p_expression','parser.py',34),
-  ('func_def -> FN IDENTIFIER LPAREN parameters RPAREN block','func_def',6,'p_func_def','parser.py',39),
-  ('parameters -> IDENTIFIER','parameters',1,'p_parameters','parser.py',43),
-  ('parameters -> parameters COMMA IDENTIFIER','parameters',3,'p_parameters','parser.py',44),
-  ('parameters -> empty','parameters',1,'p_parameters','parser.py',45),
-  ('func_call -> IDENTIFIER LPAREN arguments RPAREN','func_call',4,'p_func_call','parser.py',53),
-  ('arguments -> expression','arguments',1,'p_arguments','parser.py',57),
-  ('arguments -> arguments COMMA expression','arguments',3,'p_arguments','parser.py',58),
-  ('arguments -> empty','arguments',1,'p_arguments','parser.py',59),
-  ('if_statement -> IF expression block elseif_list else_block','if_statement',5,'p_if_statement','parser.py',67),
-  ('elseif_list -> elseif_list elseif','elseif_list',2,'p_elseif_list','parser.py',71),
-  ('elseif_list -> empty','elseif_list',1,'p_elseif_list','parser.py',72),
-  ('elseif -> ELSEIF expression block','elseif',3,'p_elseif','parser.py',76),
-  ('else_block -> ELSE block','else_block',2,'p_else_block','parser.py',80),
-  ('else_block -> empty','else_block',1,'p_else_block','parser.py',81),
-  ('loop_statement -> REPEAT expression block','loop_statement',3,'p_loop_statement','parser.py',86),
-  ('loop_statement -> LOOP block','loop_statement',2,'p_loop_statement','parser.py',87),
-  ('class_def -> CLASS IDENTIFIER block','class_def',3,'p_class_def','parser.py',92),
-  ('block -> LBRACE statement_list RBRACE','block',3,'p_block','parser.py',97),
-  ('show_stmt -> SHOW expression','show_stmt',2,'p_show_stmt','parser.py',102),
-  ('empty -> <empty>','empty',0,'p_empty','parser.py',107),
+  ('program -> statement_list','program',1,'p_program','parser.py',15),
+  ('statement_list -> statement','statement_list',1,'p_statement_list','parser.py',19),
+  ('statement_list -> statement_list statement','statement_list',2,'p_statement_list','parser.py',20),
+  ('statement -> var_decl','statement',1,'p_statement','parser.py',24),
+  ('statement -> var_assign','statement',1,'p_statement','parser.py',25),
+  ('statement -> func_def','statement',1,'p_statement','parser.py',26),
+  ('statement -> func_call','statement',1,'p_statement','parser.py',27),
+  ('statement -> show_stmt','statement',1,'p_statement','parser.py',28),
+  ('statement -> if_statement','statement',1,'p_statement','parser.py',29),
+  ('statement -> loop_statement','statement',1,'p_statement','parser.py',30),
+  ('statement -> class_def','statement',1,'p_statement','parser.py',31),
+  ('var_decl -> IDENTIFIER expression','var_decl',2,'p_var_decl','parser.py',35),
+  ('var_assign -> IDENTIFIER EQUALS expression','var_assign',3,'p_var_assign','parser.py',39),
+  ('func_def -> FN IDENTIFIER LPAREN parameters RPAREN block','func_def',6,'p_func_def','parser.py',43),
+  ('parameters -> IDENTIFIER','parameters',1,'p_parameters','parser.py',47),
+  ('parameters -> parameters COMMA IDENTIFIER','parameters',3,'p_parameters','parser.py',48),
+  ('parameters -> empty','parameters',1,'p_parameters','parser.py',49),
+  ('func_call -> IDENTIFIER LPAREN arguments RPAREN','func_call',4,'p_func_call','parser.py',56),
+  ('arguments -> expression','arguments',1,'p_arguments','parser.py',60),
+  ('arguments -> arguments COMMA expression','arguments',3,'p_arguments','parser.py',61),
+  ('arguments -> empty','arguments',1,'p_arguments','parser.py',62),
+  ('show_stmt -> SHOW expression','show_stmt',2,'p_show_stmt','parser.py',69),
+  ('if_statement -> IF expression block elseif_list else_block','if_statement',5,'p_if_statement','parser.py',73),
+  ('elseif_list -> elseif_list elseif','elseif_list',2,'p_elseif_list','parser.py',77),
+  ('elseif_list -> empty','elseif_list',1,'p_elseif_list','parser.py',78),
+  ('elseif -> ELSEIF expression block','elseif',3,'p_elseif','parser.py',82),
+  ('else_block -> ELSE block','else_block',2,'p_else_block','parser.py',86),
+  ('else_block -> empty','else_block',1,'p_else_block','parser.py',87),
+  ('loop_statement -> REPEAT expression block','loop_statement',3,'p_loop_statement','parser.py',91),
+  ('loop_statement -> LOOP block','loop_statement',2,'p_loop_statement','parser.py',92),
+  ('class_def -> CLASS IDENTIFIER block','class_def',3,'p_class_def','parser.py',96),
+  ('block -> LBRACE statement_list RBRACE','block',3,'p_block','parser.py',100),
+  ('expression -> expression PLUS expression','expression',3,'p_expression_binop','parser.py',104),
+  ('expression -> expression MINUS expression','expression',3,'p_expression_binop','parser.py',105),
+  ('expression -> expression TIMES expression','expression',3,'p_expression_binop','parser.py',106),
+  ('expression -> expression DIVIDE expression','expression',3,'p_expression_binop','parser.py',107),
+  ('expression -> expression MOD expression','expression',3,'p_expression_binop','parser.py',108),
+  ('expression -> expression GT expression','expression',3,'p_expression_binop','parser.py',109),
+  ('expression -> expression LT expression','expression',3,'p_expression_binop','parser.py',110),
+  ('expression -> expression GE expression','expression',3,'p_expression_binop','parser.py',111),
+  ('expression -> expression LE expression','expression',3,'p_expression_binop','parser.py',112),
+  ('expression -> expression EQEQ expression','expression',3,'p_expression_binop','parser.py',113),
+  ('expression -> expression NEQ expression','expression',3,'p_expression_binop','parser.py',114),
+  ('expression -> expression AND expression','expression',3,'p_expression_binop','parser.py',115),
+  ('expression -> expression OR expression','expression',3,'p_expression_binop','parser.py',116),
+  ('expression -> LPAREN expression RPAREN','expression',3,'p_expression_group','parser.py',120),
+  ('expression -> NUMBER','expression',1,'p_expression_literal','parser.py',124),
+  ('expression -> STRING','expression',1,'p_expression_literal','parser.py',125),
+  ('expression -> IDENTIFIER','expression',1,'p_expression_identifier','parser.py',129),
+  ('empty -> <empty>','empty',0,'p_empty','parser.py',133),
 ]
