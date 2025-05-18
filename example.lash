@@ -1,0 +1,71 @@
+# LASH Programming Language Example
+
+# Variable declaration and assignment
+name "User"
+age 25
+
+# String concatenation and output
+show "Hello, " + name + "!"
+show "You are " + to_str(age) + " years old."
+
+# Input with prompt
+response ask "Do you like programming? (yes/no) "
+
+# Conditional statement
+if response == "yes" {
+    show "That's great!"
+} elseif response == "no" {
+    show "You might change your mind someday!"
+} else {
+    show "I didn't understand your response."
+}
+
+# Function definition
+fn greet(person, message) {
+    show message + ", " + person + "!"
+    return "Greeting delivered"
+}
+
+# Function call
+result greet(name, "Welcome to LASH")
+show "Function result: " + result
+
+# Loop
+show "Counting from 1 to 5:"
+counter 1
+repeat 5 {
+    show counter
+    counter counter + 1
+}
+
+# Array creation and manipulation
+numbers [1, 2, 3, 4, 5]
+show "Array: " + to_str(numbers)
+show "Array length: " + to_str(len(numbers))
+
+# Array operations
+show "Third element: " + to_str(numbers[2])  # Zero-based indexing
+numbers[0] 10  # Change first element
+show "Modified array: " + to_str(numbers)
+
+# Class definition
+class Person {
+    fn init(name, age) {
+        this.name name
+        this.age age
+    }
+    
+    fn describe() {
+        return this.name + " is " + to_str(this.age) + " years old"
+    }
+    
+    fn have_birthday() {
+        this.age this.age + 1
+        return this.age
+    }
+}
+
+# Create and use class instance
+person Person("John", 30)
+show person.describe()
+show person.name + "'s new age after birthday: " + to_str(person.have_birthday()) 
