@@ -314,6 +314,8 @@ That curiosity led me to explore tokenization, parsing, abstract syntax trees, i
 
 It is an ongoing reminder that some of the best learning experiences come from attempting something difficult, working through the challenges, and bringing an idea to life.
 
+For LASH Documentation and Screenshots read README2.md
+
 ## 👨‍💻 Developer
 
 **Yash Rawat**
