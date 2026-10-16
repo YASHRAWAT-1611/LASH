@@ -264,7 +264,7 @@ Check the launcher scripts and **IDE** documentation for platform-specific requi
 The repository includes additional documentation:
 
 - **`LASH_COMPILER_README.md`** — Compiler and language implementation documentation.
-- **`LASH_IDE_README.md`** — Documentation for the **LASH** **IDE**.
+- **`README2.md`** — Documentation for the **LASH** **IDE**.
 - **`README_FINAL.md`** — Additional project documentation.
 
 Consult these files for further details about language syntax, execution, and development tools.
